@@ -1,0 +1,48 @@
+challenge:
+  type: CodeChallenge
+  id: C001
+  title: The Enigma
+  description: Here you will learn to mitigate XSS vulnerabilities.
+  category: Client Injections
+  difficulty: Intermediate
+  rules: Don't try to escape or break into this machine.
+  input: 
+  code:
+    - id: CC001
+      title: Escaping
+      description: Escape this string "<img src='https://evil.com/malware.js'>"
+      expected_output: "&lt;img src='https://evil.com/malware.js'&gt;"
+      code_snippet: |
+        def escape_string(s):
+          # Your code here
+          pass
+      reward_points: 100
+    - id: CC002
+      title: Input Validation
+      description: Make sure this input is safe by encode it before the server renders it "<img src='https://evil.com/malware.js'>"
+      expected_output: "Invalid input."
+      code_snippet: |
+        def validate_input(s):
+          # Your code here
+          pass
+      reward_points: 100
+    - id: CC004
+      title: Configuring Content Security Policy
+      description: Create a basic CSP that allows only scripts from the same origin and styles from a specific domain
+      expected_output: "Content-Security-Policy: script-src 'self'; style-src 'https://trusted.com'"
+      code_snippet: |
+        def create_csp():
+          # Your code here
+          pass
+      reward_points: 100
+  config:
+    language: Python
+    version: '3.8'
+webhook_config:
+  logs_webhook_url: https://webhook.example.com/logs
+metadata:
+  audience:
+    group_id: group001
+    group_name: CTF Champions
+  creator:
+    username: creator
